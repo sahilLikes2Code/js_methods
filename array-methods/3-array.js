@@ -11,11 +11,21 @@ var words = [
   'simple',
   'bring'
 ];
-
 // Write a function uniqueArray that receives an array of words as a parameter. And remove the duplicates, and return a new array. 
 // (indexOf)
 
+function uniqueArray(word , index){
+  if(words.indexOf(word , index+1)!=-1){
+    return false;
+  }
+  else{
+    return true;
+  }  
+}
+var newArray = words.filter(uniqueArray);
+console.log(newArray);
 
+//==
 
 var words2 = [
   'machine',
@@ -31,8 +41,16 @@ var words2 = [
 // Write a function doesWordExist that will take in an array of words as one argument, and a word to search for as the other. Return true if it exists, otherwise, return false. Don't use indexOf for this one.
 
 
+function doesWordExist(searchWord){
+  var word=words2.filter((currentWord)=> {
+    return (currentWord === searchWord)?true:false;
+  })
+  return (word.length>0)?true:false;
+}
+console.log(doesWordExist('disobedience'));   //true
+console.log(doesWordExist('name'));        //false
 
-
+//========
 var words3 = [
   'machine',
   'matter',
@@ -47,13 +65,19 @@ var words3 = [
   'matter'
 ];
 
-
 // Write a function howManyTimes that will take in an array of words as one argument, and a word to search for as the other. The function will return the number of times that word appears in the array.
 
+function doesWordExist(searchWord){
+  var word=words3.filter((currentWord)=> {
+    return (currentWord === searchWord)?true:false;
+  })
+  return (word.length);
+}
+console.log(doesWordExist('matter'));    //4
+console.log(doesWordExist('name'));   //0     
 
 
-
-
+//=====
 // Using the reduce() method, how would you sum up the population of every country except China?
 let data = [
   {
@@ -75,6 +99,18 @@ let data = [
 ]
 
 
+
+let population = data.reduce((sum , current_object , i)=>{
+  if(current_object.country !== "China"){
+    sum +=current_object.pop;
+  }
+ return sum;
+},sum=0);
+
+console.log(population);
+
+
+//=====
 // Use reduce method and summorize the collection like
 // { banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1 }
 const fruitBasket = [
@@ -91,8 +127,21 @@ const fruitBasket = [
   'fig'
 ];
 
+var newObject = fruitBasket.reduce((acc , currentFruit)=>{
+  if(acc[currentFruit]){
+    acc[currentFruit] = acc[currentFruit] + 1;
+  }
+  else{
+    acc[currentFruit] = 1;
+  }
+ return acc ;    
+
+} , acc ={})
+
+console.log(newObject);
 
 
+//====
 // Bonus Question (Solve only if you have time)
 var matrix = [
   [08,02,22,97,38,15,00,40,00,75,04,05,07,78,52,12,50,77,91,08],
